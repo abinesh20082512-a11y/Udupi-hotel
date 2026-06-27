@@ -1,0 +1,165 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React from 'react';
+import { motion } from 'motion/react';
+import { Star, ShieldAlert, Award, Coffee, Sparkles, CheckCircle2 } from 'lucide-react';
+import { RESTAURANT_INFO } from '../data';
+
+export default function About() {
+  const highlights = [
+    {
+      icon: <Award className="h-6 w-6 text-amber-500" />,
+      title: 'A/C Family Dining Room',
+      description: 'Relax in our beautifully cooled, comfortable family dining room designed for clean and happy family meals.'
+    },
+    {
+      icon: <Sparkles className="h-6 w-6 text-amber-500" />,
+      title: 'Pristine Hygiene Standards',
+      description: 'Cleanliness is our prayer. Every ingredient, vessel, and surface is kept to peak health and sanitary standards.'
+    },
+    {
+      icon: <Coffee className="h-6 w-6 text-amber-500" />,
+      title: 'Iconic Sattur Pit-Stop',
+      description: 'Conveniently located on Main Road, Saathur. Renowned by thousands of highway travelers and local families alike.'
+    }
+  ];
+
+  return (
+    <section id="about" className="relative bg-neutral-900 px-4 py-24 sm:px-6 lg:px-8">
+      {/* Background radial gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.05),transparent_40%)]" />
+
+      <div className="relative mx-auto max-w-7xl">
+        {/* Title Block */}
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="font-sans text-xs font-bold uppercase tracking-widest text-amber-500">
+            Heritage & Hygiene
+          </span>
+          <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-neutral-50 sm:text-4xl">
+            A Clean Culinary Haven in Sattur, Tamil Nadu
+          </h3>
+          <p className="mt-4 font-sans text-base text-neutral-400">
+            For years, Udupi Venkatesha Bhavan has served as the gold standard for pure vegetarian, authentic South Indian cuisine. Our commitment to taste, freshness, and hospitality remains unmatched.
+          </p>
+        </div>
+
+        {/* Feature Grid & Big Card */}
+        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:items-stretch">
+          {/* Left Block - Features list */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+            <div className="grid gap-6 sm:grid-cols-1">
+              {highlights.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="flex gap-4 rounded-2xl border border-neutral-800 bg-neutral-950 p-6 shadow-md transition-all hover:border-amber-500/30"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg font-bold text-neutral-100">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1.5 font-sans text-sm leading-relaxed text-neutral-400">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* List of Quick Badges */}
+            <div className="flex flex-wrap gap-3">
+              {RESTAURANT_INFO.features.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-1.5 rounded-full border border-neutral-800 bg-neutral-950 px-4 py-2 font-sans text-xs font-medium text-neutral-300"
+                >
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+                  {feature}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Block - Google Rating Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex flex-col justify-between rounded-3xl border border-neutral-800 bg-neutral-950 p-8 shadow-xl relative overflow-hidden"
+          >
+            {/* Visual background decor */}
+            <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl" />
+
+            <div>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500">
+                  <Star className="h-5 w-5 fill-neutral-950 text-neutral-950" />
+                </div>
+                <span className="font-sans text-sm font-bold text-amber-500 uppercase tracking-wider">
+                  Highly Rated
+                </span>
+              </div>
+
+              <h4 className="mt-6 font-display text-4xl font-extrabold text-neutral-50">
+                {RESTAURANT_INFO.rating} Stars
+              </h4>
+              <p className="mt-2 font-sans text-sm text-neutral-400">
+                Loved by families, travelers, and food lovers. Backed by over <span className="font-bold text-amber-400">{RESTAURANT_INFO.reviewsCount} verified reviews</span> on Google Maps.
+              </p>
+
+              {/* Graphical rating breakdowns visual representation */}
+              <div className="mt-8 space-y-3">
+                <div className="space-y-1">
+                  <div className="flex justify-between font-sans text-xs text-neutral-400">
+                    <span>Taste & Food Quality</span>
+                    <span className="font-semibold text-neutral-200">4.8 / 5.0</span>
+                  </div>
+                  <div className="h-1.5 w-full rounded-full bg-neutral-800">
+                    <div className="h-full rounded-full bg-amber-500" style={{ width: '94%' }} />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between font-sans text-xs text-neutral-400">
+                    <span>Hygiene & Cleanliness</span>
+                    <span className="font-semibold text-neutral-200">4.7 / 5.0</span>
+                  </div>
+                  <div className="h-1.5 w-full rounded-full bg-neutral-800">
+                    <div className="h-full rounded-full bg-amber-500" style={{ width: '91%' }} />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between font-sans text-xs text-neutral-400">
+                    <span>Value for Money</span>
+                    <span className="font-semibold text-neutral-200">4.9 / 5.0</span>
+                  </div>
+                  <div className="h-1.5 w-full rounded-full bg-neutral-800">
+                    <div className="h-full rounded-full bg-amber-500" style={{ width: '97%' }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 border-t border-neutral-900 pt-6">
+              <p className="font-sans text-xs italic text-neutral-500 leading-relaxed">
+                "We came with 10 family members in the afternoon. The dining room is fully air-conditioned, and the meals were served piping hot on traditional banana leaf style. Amazing experience!"
+              </p>
+              <p className="mt-2 font-sans text-xs font-bold text-neutral-300">
+                - Reviewer, Google Local Guide
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
